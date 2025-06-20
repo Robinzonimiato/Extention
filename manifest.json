@@ -1,0 +1,57 @@
+﻿{
+  "manifest_version": 3,
+  "name": "S2B TooL",
+  "version": "2",
+  "description": "Affiliate detect, Bonus rate calculator, Auto-refresher, UI enchancer and LiveChat Renamer.",
+  "author": "Robin & David + Gemini",
+  "default_locale": "uk",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Open S2B TooL Panel"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.gosystem.io/*",
+        "https://*.livechatinc.com/*",
+        "https://*.livechat.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://*.gosystem.io/*",
+    "https://*.livechatinc.com/*",
+    "https://*.livechat.com/*",
+    "https://us-central1-affilates-5f993.cloudfunctions.net/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/previews/*.png",
+        "_locales/uk/messages.json",
+        "_locales/en/messages.json"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
